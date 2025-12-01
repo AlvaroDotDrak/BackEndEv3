@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mb-4" style="max-width: 600px; margin: auto;">
+    <div class="card-header py-3 bg-danger text-white">
+        <h6 class="m-0 font-weight-bold">Confirmar Eliminación de Categoría</h6>
+    </div>
+    <div class="card-body">
+        <p>¿Estás seguro de que deseas eliminar la categoría "{{ object.nombre }}"?</p>
+        <p class="text-danger">¡Advertencia! Esto podría eliminar productos asociados si están configurados en cascada.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+            <a href="{% url 'categoria_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
